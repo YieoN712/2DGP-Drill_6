@@ -15,7 +15,8 @@ char_direction = True
 
 def rand_hand():
     global handX, handY
-    handX, handY = random.randint(50 // 2, WIDTH - 50 // 2), random.randint(52 // 2, HEIGHT - 52 // 2)
+    handX = random.randint(50 // 2, WIDTH - 50 // 2)
+    handY = random.randint(52 // 2, HEIGHT - 52 // 2)
 
 def move_character():
     global x, y, char_direction
