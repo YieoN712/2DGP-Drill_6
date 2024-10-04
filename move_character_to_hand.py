@@ -50,7 +50,7 @@ while running:
 
     frame = (frame + 1) % 8
 
-    if abs(x - handX) < 100 // 2 and abs(y - handY) < 100 // 2:
+    if math.sqrt((x - handX)**2 + (y - handY)**2) < 50:
         rand_hand()
 
     update_canvas()
