@@ -1,5 +1,6 @@
 from pico2d import *
 import random
+import math
 
 WIDTH, HEIGHT = 1280, 1024
 open_canvas(WIDTH, HEIGHT)
@@ -15,22 +16,20 @@ char_direction = True
 def rand_hand():
     global handX, handY
     handX, handY = random.randint(50 // 2, WIDTH - 50 // 2), random.randint(52 // 2, HEIGHT - 52 // 2)
-    pass
 
 def move_character():
     global x, y, char_direction
-    if x < handX:
-        x += charSpeed
-        char_direction=True
-    elif x > handX:
-        x -= charSpeed
-        char_direction = False
+    dx = handX - x
+    dy = handY - y
+    distance = math.sqrt(dx**2 + dy**2)
 
-    if y < handY:
-        y += charSpeed
-    elif y > handY:
-        y -= charSpeed
-    pass
+    if distance > 0:
+        move_x = (dx / distance) * charSpeed
+        move_y = (dy / distance) * charSpeed
+        x += move_x
+        y += move_y
+
+        char_direction = move_x > 0
 
 running = True
 frame = 0
